@@ -12,7 +12,23 @@ function MiniQuiz() {
     setCustomAnswer("");
   };
 
-  const handleSubmit = () => {
+  //   const handleSubmit = () => {
+  //     const finalAnswer = customAnswer || answer;
+
+  //     if (!finalAnswer) {
+  //       alert("Оберіть або введіть відповідь перед відправкою!");
+  //       return;
+  //     }
+
+  //     setSubmitted(true);
+  //     setLoading(true);
+
+  //     setTimeout(() => {
+  //       window.location.href = "https://a-good-offer-for-you.vercel.app/";
+  //     }, 1000);
+  //   };
+
+  const handleSubmit = async () => {
     const finalAnswer = customAnswer || answer;
 
     if (!finalAnswer) {
@@ -22,6 +38,19 @@ function MiniQuiz() {
 
     setSubmitted(true);
     setLoading(true);
+
+    try {
+      await fetch("http://localhost:5000/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          selectedOption: answer || null,
+          customInput: customAnswer || null,
+        }),
+      });
+    } catch (error) {
+      console.error("Помилка при відправці:", error);
+    }
 
     setTimeout(() => {
       window.location.href = "https://a-good-offer-for-you.vercel.app/";
