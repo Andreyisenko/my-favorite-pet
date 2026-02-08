@@ -1,23 +1,40 @@
 h1 {
-  height: 100%;
   text-align: center;
   font-family: "Bangers", cursive;
-  color: orange; /* колір тексту */
+  color: orange;
   text-shadow:
     2px 2px 0 red,
-    4px 4px 0 yellow; /* «мультяшна» тінь */
-  font-size: 8rem; /* можна змінити під свій дизайн */
+    4px 4px 0 yellow;
+  font-size: 8rem; /* для десктопу */
   background-color: aqua;
+  margin: 0;
+  padding: 20px 10px;
+  word-wrap: break-word;
 }
 
 h2 {
-  margin: 0;
   text-align: center;
   font-family: "Bangers", cursive;
-  color: orange; /* колір тексту */
+  color: orange;
   text-shadow:
     2px 2px 0 red,
-    4px 4px 0 yellow; /* «мультяшна» тінь */
-  font-size: 4rem; /* можна змінити під свій дизайн */
+    4px 4px 0 yellow;
+  font-size: 4rem; /* для десктопу */
   background-color: aqua;
+  margin: 0;
+  padding: 15px 10px;
+  word-wrap: break-word;
+}
+
+/* Адаптив для мобільних */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 4rem; /* зменшуємо для маленьких екранів */
+    padding: 15px 5px;
+  }
+
+  h2 {
+    font-size: 2rem; /* зменшуємо для маленьких екранів */
+    padding: 10px 5px;
+  }
 }

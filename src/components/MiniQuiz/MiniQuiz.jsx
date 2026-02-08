@@ -40,6 +40,11 @@ function MiniQuiz() {
     setLoading(true);
 
     try {
+      console.log("Sending to server:", {
+        selectedOption: answer,
+        customInput: customAnswer,
+      });
+
       await fetch("http://localhost:5000/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
