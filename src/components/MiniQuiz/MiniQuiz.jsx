@@ -29,51 +29,53 @@ function MiniQuiz() {
   };
 
   return (
-    <div className="quiz-wrapper">
-      {!submitted && (
-        <>
-          <div className="options">
+    <div className="quiz-bg">
+      <div className="quiz-wrapper">
+        {!submitted && (
+          <>
+            <div className="options">
+              <button
+                className={`option-btn cat ${answer === "Котик" ? "selected" : ""}`}
+                onClick={() => handleSelect("Котик")}
+              >
+                🐱 Котик
+              </button>
+              <button
+                className={`option-btn dog ${answer === "Собачка" ? "selected" : ""}`}
+                onClick={() => handleSelect("Собачка")}
+              >
+                🐶 Собачка
+              </button>
+            </div>
+
+            <input
+              type="text"
+              className="custom-input"
+              placeholder="Введіть свій варіант"
+              value={customAnswer}
+              onChange={(e) => {
+                setCustomAnswer(e.target.value);
+                setAnswer("");
+              }}
+            />
+
             <button
-              className={`option-btn cat ${answer === "Котик" ? "selected" : ""}`}
-              onClick={() => handleSelect("Котик")}
+              className="submit-btn"
+              onClick={handleSubmit}
+              disabled={!answer && !customAnswer}
             >
-              🐱 Котик
+              Відправити відповідь
             </button>
-            <button
-              className={`option-btn dog ${answer === "Собачка" ? "selected" : ""}`}
-              onClick={() => handleSelect("Собачка")}
-            >
-              🐶 Собачка
-            </button>
-          </div>
+          </>
+        )}
 
-          <input
-            type="text"
-            className="custom-input"
-            placeholder="Введіть свій варіант"
-            value={customAnswer}
-            onChange={(e) => {
-              setCustomAnswer(e.target.value);
-              setAnswer("");
-            }}
-          />
-
-          <button
-            className="submit-btn"
-            onClick={handleSubmit}
-            disabled={!answer && !customAnswer}
-          >
-            Відправити відповідь
-          </button>
-        </>
-      )}
-
-      {submitted && (
-        <>
-          {loading && <div className="loader"></div>}
-          <p className="success-msg">Ваша відповідь прийнята! 🥳</p>
-        </>
-      )}
+        {submitted && (
+          <>
+            {loading && <div className="loader"></div>}
+            <p className="success-msg">Ваша відповідь прийнята! 🥳</p>
+          </>
+        )}
+      </div>
     </div>
   );
 }

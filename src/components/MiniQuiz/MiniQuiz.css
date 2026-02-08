@@ -1,3 +1,16 @@
+/* Фон на всю ширину і висоту viewport */
+.quiz-bg {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: aqua; /* зелений фон */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Внутрішній блок вікторини */
 .quiz-wrapper {
   text-align: center;
   background: linear-gradient(135deg, #fceabb, #f8b500);
@@ -42,7 +55,6 @@
   position: relative;
 }
 
-/* Кнопки котика і собачки */
 .option-btn.cat {
   background-color: #ff6f91;
 }
@@ -50,13 +62,11 @@
   background-color: #6fb1fc;
 }
 
-/* Анімація при наведенні */
 .option-btn:hover {
   transform: translateY(-5px) scale(1.05);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
-/* Пульсуючий ефект для обраної кнопки */
 .option-btn.selected {
   animation: pulse 0.8s infinite alternate;
   box-shadow: 0 0 20px #fff;
@@ -128,22 +138,18 @@
   }
 }
 
-/* Мобільна версія */
 @media (max-width: 480px) {
   .quiz-wrapper {
     padding: 30px 15px;
   }
-
   .quiz-wrapper h2 {
     font-size: 20px;
     margin-bottom: 20px;
   }
-
   .option-btn {
     padding: 12px;
     font-size: 14px;
   }
-
   .custom-input,
   .submit-btn {
     width: 90%;
