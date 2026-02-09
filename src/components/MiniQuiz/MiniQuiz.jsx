@@ -171,7 +171,7 @@ function MiniQuiz() {
     }
 
     setTimeout(() => {
-      window.location.href = "https://a-good-offer-for-you.vercel.app/";
+      window.location.href = "";
     }, 1000);
   };
 
