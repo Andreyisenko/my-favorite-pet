@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./MiniQuiz.css";
+import ReactPixel from "react-facebook-pixel";
 
 function MiniQuiz() {
   const [answer, setAnswer] = useState("");
@@ -39,6 +40,14 @@ function MiniQuiz() {
     setSubmitted(true);
     setLoading(true);
 
+    // -----------------------------
+    // Відправка події в Facebook Pixel
+    ReactPixel.track("ClickAdButton", {
+      content_name: finalAnswer, // текст відповіді
+      content_category: "Arbitrage", // категорія для звітів
+    });
+    // -----------------------------
+
     try {
       console.log("Sending to server:", {
         selectedOption: answer,
@@ -59,7 +68,7 @@ function MiniQuiz() {
 
     setTimeout(() => {
       window.location.href = "https://a-good-offer-for-you.vercel.app/";
-    }, 1000);
+    }, 200);
   };
 
   return (
