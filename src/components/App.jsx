@@ -4,9 +4,11 @@ import "./App.css"; // твій CSS
 import MiniQuiz from "./MiniQuiz/MiniQuiz";
 function App() {
   return (
-    <div>
-      <h1>My-favorite-pet</h1>
-      <h2>Мій домашній улюбленець</h2>
+    <div className="wwwrap">
+      <h1>
+        My-favorite-pet <br></br>
+        <h2>Мій домашній улюбленець</h2>
+      </h1>
       <MiniQuiz />
     </div>
   );

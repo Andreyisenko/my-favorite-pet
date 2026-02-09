@@ -2,14 +2,15 @@
 .quiz-bg {
   width: 100vw;
   min-height: 100vh;
-  background-color: aqua; /* зелений фон */
-  /* display: flex; */
+
+  /* background: linear-gradient(135deg, rgb(53, 101, 101), rgb(224, 68, 94)); */
+
+  /* градієнт з двох кольорів */
   justify-content: center;
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
 }
-
 /* Внутрішній блок вікторини */
 .quiz-wrapper {
   text-align: center;
