@@ -185,7 +185,7 @@
   cursor: pointer;
   box-shadow:
     0 6px #af8d7e,
-    0 8px 15px rgba(0, 0, 0, 0.3);
+    0 8px 15px rgba(167, 148, 148, 0.3);
   transition: all 0.2s ease-in-out;
   perspective: 1000px; /* для 3D ефекту */
 }
