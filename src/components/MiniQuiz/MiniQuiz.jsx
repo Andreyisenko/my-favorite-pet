@@ -64,6 +64,46 @@ function MiniQuiz() {
   //     // -----------------------------
   //   };
 
+  // const handleSubmit = () => {
+  //   const finalAnswer = customAnswer || answer;
+
+  //   if (!finalAnswer) {
+  //     alert("Оберіть або введіть відповідь!");
+  //     return;
+  //   }
+  //   // {
+  //   //   while (answer === "Коти") {
+  //   //     console.log(3);
+  //   //   }
+  //   // }
+
+  //   // 🔥 ПЕРЕХІД НА РЕКЛАМУ (CPC)
+  //   window.open(
+  //     "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
+  //     "_blank",
+  //   );
+
+  //   // Facebook Pixel
+  //   ReactPixel.track("Lead", {
+  //     selectedOption: answer || null,
+  //     customInput: customAnswer || null,
+  //   });
+
+  //   setSubmitted(true);
+  //   setLoading(true);
+
+  //   fetch("http://localhost:5000/api/submit", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       selectedOption: answer || null,
+  //       customInput: customAnswer || null,
+  //     }),
+  //   }).catch(console.error);
+
+  //   setTimeout(() => setLoading(false), 200);
+  // };
+
   const handleSubmit = () => {
     const finalAnswer = customAnswer || answer;
 
@@ -71,17 +111,6 @@ function MiniQuiz() {
       alert("Оберіть або введіть відповідь!");
       return;
     }
-    // {
-    //   while (answer === "Коти") {
-    //     console.log(3);
-    //   }
-    // }
-
-    // 🔥 ПЕРЕХІД НА РЕКЛАМУ (CPC)
-    window.open(
-      "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
-      "_blank",
-    );
 
     // Facebook Pixel
     ReactPixel.track("Lead", {
@@ -101,7 +130,16 @@ function MiniQuiz() {
       }),
     }).catch(console.error);
 
-    setTimeout(() => setLoading(false), 200);
+    // -----------------------------
+    // Відкладений перехід на рекламу (2.5 секунди)
+    // -----------------------------
+    setTimeout(() => {
+      window.open(
+        "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
+        "_blank",
+      );
+      setLoading(false); // можна вимкнути лоадер разом з відкриттям
+    }, 2000); // тут можна змінити час (мс)
   };
 
   return (
@@ -149,6 +187,12 @@ function MiniQuiz() {
           <>
             {loading && <div className="loader"></div>}
             <p className="success-msg">Ваша відповідь прийнята! 🥳</p>
+            <p className="delay-msg">
+              ⏳ Чекайте на результати опитування через
+              <span> 3 доби </span>
+              <br />
+              🔥 Буде дуже цікаво — не пропустіть 😉✨
+            </p>
           </>
         )}
       </div>

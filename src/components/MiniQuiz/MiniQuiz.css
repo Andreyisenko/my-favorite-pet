@@ -157,3 +157,33 @@
     font-size: 14px;
   }
 }
+
+.delay-msg {
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff1c1, #ffe3a3);
+  color: #5a3b00;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.5;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  animation: fadeInUp 0.6s ease;
+}
+
+.delay-msg span {
+  font-weight: 700;
+  color: #ff7a00;
+}
+
+/* Легка анімація */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
