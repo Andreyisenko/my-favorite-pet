@@ -13,15 +13,77 @@ function MiniQuiz() {
     setCustomAnswer("");
   };
 
-  const handleSubmit = async () => {
+  //   const handleSubmit = async () => {
+  //     const finalAnswer = customAnswer || answer;
+
+  //     if (!finalAnswer) {
+  //       alert("Оберіть або введіть відповідь перед відправкою!");
+  //       return;
+  //     }
+
+  //     // Відстеження події Lead у Facebook Pixel
+  //     ReactPixel.track("Lead", {
+  //       selectedOption: answer || null,
+  //       customInput: customAnswer || null,
+  //     });
+
+  //     setSubmitted(true);
+  //     setLoading(true);
+
+  //     try {
+  //       await fetch("http://localhost:5000/api/submit", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({
+  //           selectedOption: answer || null,
+  //           customInput: customAnswer || null,
+  //         }),
+  //       });
+  //     } catch (error) {
+  //       console.error("Помилка при відправці:", error);
+  //     }
+
+  //     // -----------------------------
+  //     // Вставка нового скрипта CloseFracture на кнопку
+  //     // -----------------------------
+  //     if (!document.getElementById("container-closefracture")) {
+  //       const div = document.createElement("div");
+  //       div.id = "container-bc5cef0009918039c5c89db9fdf1b4b7";
+  //       document.body.appendChild(div);
+  //     }
+
+  //     const script = document.createElement("script");
+  //     script.src =
+  //       "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb";
+  //     script.async = true;
+  //     document.body.appendChild(script);
+
+  //     setTimeout(() => {
+  //       setLoading(false);
+  //     }, 200);
+  //     // -----------------------------
+  //   };
+
+  const handleSubmit = () => {
     const finalAnswer = customAnswer || answer;
 
     if (!finalAnswer) {
-      alert("Оберіть або введіть відповідь перед відправкою!");
+      alert("Оберіть або введіть відповідь!");
       return;
     }
+    // {
+    //   while (answer === "Коти") {
+    //     console.log(3);
+    //   }
+    // }
 
-    // Відстеження події Lead у Facebook Pixel
+    // 🔥 ПЕРЕХІД НА РЕКЛАМУ (CPC)
+    window.open(
+      "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
+      "_blank",
+    );
+
+    // Facebook Pixel
     ReactPixel.track("Lead", {
       selectedOption: answer || null,
       customInput: customAnswer || null,
@@ -30,38 +92,16 @@ function MiniQuiz() {
     setSubmitted(true);
     setLoading(true);
 
-    try {
-      await fetch("http://localhost:5000/api/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          selectedOption: answer || null,
-          customInput: customAnswer || null,
-        }),
-      });
-    } catch (error) {
-      console.error("Помилка при відправці:", error);
-    }
+    fetch("http://localhost:5000/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        selectedOption: answer || null,
+        customInput: customAnswer || null,
+      }),
+    }).catch(console.error);
 
-    // -----------------------------
-    // Вставка нового скрипта CloseFracture на кнопку
-    // -----------------------------
-    if (!document.getElementById("container-closefracture")) {
-      const div = document.createElement("div");
-      div.id = "container-bc5cef0009918039c5c89db9fdf1b4b7";
-      document.body.appendChild(div);
-    }
-
-    const script = document.createElement("script");
-    script.src =
-      "https://closefracture.com/bc5cef0009918039c5c89db9fdf1b4b7/invoke.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
-    // -----------------------------
+    setTimeout(() => setLoading(false), 200);
   };
 
   return (
