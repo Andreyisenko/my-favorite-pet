@@ -53,8 +53,7 @@ function MiniQuiz() {
     }
 
     const script = document.createElement("script");
-    script.src =
-      "https://closefracture.com/06/a3/19/06a319961ea6efe99e3b8ad6cc2d59c1.js";
+    script.src = "https://*";
     script.async = true;
     document.body.appendChild(script);
 
