@@ -48,12 +48,13 @@ function MiniQuiz() {
     // -----------------------------
     if (!document.getElementById("container-closefracture")) {
       const div = document.createElement("div");
-      div.id = "container-closefracture";
+      div.id = "container-bc5cef0009918039c5c89db9fdf1b4b7";
       document.body.appendChild(div);
     }
 
     const script = document.createElement("script");
-    script.src = "https://*";
+    script.src =
+      "https://closefracture.com/bc5cef0009918039c5c89db9fdf1b4b7/invoke.js";
     script.async = true;
     document.body.appendChild(script);
 
