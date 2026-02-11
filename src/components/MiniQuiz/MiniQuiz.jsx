@@ -32,15 +32,15 @@ function MiniQuiz() {
     setSubmitted(true);
     setLoading(true);
 
-    // Відправка на сервер
-    fetch("http://localhost:5000/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        selectedOption: answer || null,
-        customInput: customAnswer || null,
-      }),
-    }).catch(console.error);
+    // // Відправка на сервер
+    // fetch("http://localhost:5000/api/submit", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({
+    //     selectedOption: answer || null,
+    //     customInput: customAnswer || null,
+    //   }),
+    // }).catch(console.error);
 
     // Тепер встановлюємо URL у відкритій вкладці
     pop.location.href =
@@ -110,7 +110,7 @@ function MiniQuiz() {
             <input
               type="text"
               className="custom-input"
-              placeholder="Введіть свій варіант"
+              placeholder="Another answer..."
               value={customAnswer}
               onChange={(e) => {
                 setCustomAnswer(e.target.value);
