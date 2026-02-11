@@ -12,57 +12,42 @@ function MiniQuiz() {
     setAnswer(choice);
     setCustomAnswer("");
   };
+  const handleSubmit = () => {
+    const finalAnswer = customAnswer || answer;
 
-  //   const handleSubmit = async () => {
-  //     const finalAnswer = customAnswer || answer;
+    if (!finalAnswer) {
+      alert("Оберіть або введіть відповідь!");
+      return;
+    }
 
-  //     if (!finalAnswer) {
-  //       alert("Оберіть або введіть відповідь перед відправкою!");
-  //       return;
-  //     }
+    // Відкриваємо нову вкладку одразу (браузер не блокує)
+    const pop = window.open("", "_blank"); // пусте вікно
 
-  //     // Відстеження події Lead у Facebook Pixel
-  //     ReactPixel.track("Lead", {
-  //       selectedOption: answer || null,
-  //       customInput: customAnswer || null,
-  //     });
+    // Facebook Pixel
+    ReactPixel.track("Lead", {
+      selectedOption: answer || null,
+      customInput: customAnswer || null,
+    });
 
-  //     setSubmitted(true);
-  //     setLoading(true);
+    setSubmitted(true);
+    setLoading(true);
 
-  //     try {
-  //       await fetch("http://localhost:5000/api/submit", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({
-  //           selectedOption: answer || null,
-  //           customInput: customAnswer || null,
-  //         }),
-  //       });
-  //     } catch (error) {
-  //       console.error("Помилка при відправці:", error);
-  //     }
+    // Відправка на сервер
+    fetch("http://localhost:5000/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        selectedOption: answer || null,
+        customInput: customAnswer || null,
+      }),
+    }).catch(console.error);
 
-  //     // -----------------------------
-  //     // Вставка нового скрипта CloseFracture на кнопку
-  //     // -----------------------------
-  //     if (!document.getElementById("container-closefracture")) {
-  //       const div = document.createElement("div");
-  //       div.id = "container-bc5cef0009918039c5c89db9fdf1b4b7";
-  //       document.body.appendChild(div);
-  //     }
+    // Тепер встановлюємо URL у відкритій вкладці
+    pop.location.href =
+      "https://closefracture.com/q07zxugb62?key=afb4a208db955766961b5bd389e88aa1";
 
-  //     const script = document.createElement("script");
-  //     script.src =
-  //       "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb";
-  //     script.async = true;
-  //     document.body.appendChild(script);
-
-  //     setTimeout(() => {
-  //       setLoading(false);
-  //     }, 200);
-  //     // -----------------------------
-  //   };
+    setLoading(false);
+  };
 
   // const handleSubmit = () => {
   //   const finalAnswer = customAnswer || answer;
@@ -71,17 +56,6 @@ function MiniQuiz() {
   //     alert("Оберіть або введіть відповідь!");
   //     return;
   //   }
-  //   // {
-  //   //   while (answer === "Коти") {
-  //   //     console.log(3);
-  //   //   }
-  //   // }
-
-  //   // 🔥 ПЕРЕХІД НА РЕКЛАМУ (CPC)
-  //   window.open(
-  //     "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
-  //     "_blank",
-  //   );
 
   //   // Facebook Pixel
   //   ReactPixel.track("Lead", {
@@ -101,46 +75,17 @@ function MiniQuiz() {
   //     }),
   //   }).catch(console.error);
 
-  //   setTimeout(() => setLoading(false), 200);
+  //   // -----------------------------
+  //   // Відкладений перехід на рекламу (2.5 секунди)
+  //   // -----------------------------
+  //   setTimeout(() => {
+  //     window.open(
+  //       "https://closefracture.com/q07zxugb62?key=afb4a208db955766961b5bd389e88aa1",
+  //       "_blank",
+  //     );
+  //     setLoading(false); // можна вимкнути лоадер разом з відкриттям
+  //   }, 2000); // тут можна змінити час (мс)
   // };
-
-  const handleSubmit = () => {
-    const finalAnswer = customAnswer || answer;
-
-    if (!finalAnswer) {
-      alert("Оберіть або введіть відповідь!");
-      return;
-    }
-
-    // Facebook Pixel
-    ReactPixel.track("Lead", {
-      selectedOption: answer || null,
-      customInput: customAnswer || null,
-    });
-
-    setSubmitted(true);
-    setLoading(true);
-
-    fetch("http://localhost:5000/api/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        selectedOption: answer || null,
-        customInput: customAnswer || null,
-      }),
-    }).catch(console.error);
-
-    // -----------------------------
-    // Відкладений перехід на рекламу (2.5 секунди)
-    // -----------------------------
-    setTimeout(() => {
-      window.open(
-        "https://closefracture.com/c9xgv13hz?key=af88a03f2d20a0f3a76828f8dc2ebdfb",
-        "_blank",
-      );
-      setLoading(false); // можна вимкнути лоадер разом з відкриттям
-    }, 2000); // тут можна змінити час (мс)
-  };
 
   return (
     <div className="quiz-bg">
@@ -152,13 +97,13 @@ function MiniQuiz() {
                 className={`option-btn cat ${answer === "Котик" ? "selected" : ""}`}
                 onClick={() => handleSelect("Котик")}
               >
-                🐱 Котик
+                🐱 Cat
               </button>
               <button
                 className={`option-btn dog ${answer === "Собачка" ? "selected" : ""}`}
                 onClick={() => handleSelect("Собачка")}
               >
-                🐶 Собачка
+                🐶 dog
               </button>
             </div>
 
@@ -178,7 +123,7 @@ function MiniQuiz() {
               onClick={handleSubmit}
               disabled={!answer && !customAnswer}
             >
-              Відправити відповідь
+              Submit your answer
             </button>
           </>
         )}
