@@ -32,59 +32,10 @@ function MiniQuiz() {
     setSubmitted(true);
     setLoading(true);
 
-    // // Відправка на сервер
-    // fetch("http://localhost:5000/api/submit", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     selectedOption: answer || null,
-    //     customInput: customAnswer || null,
-    //   }),
-    // }).catch(console.error);
-
-    // Тепер встановлюємо URL у відкритій вкладці
     pop.location.href = "https://sgkaa.com/g/p00i8v2y657e34c89e7b49e53af9a7/";
 
     setLoading(false);
   };
-
-  // const handleSubmit = () => {
-  //   const finalAnswer = customAnswer || answer;
-
-  //   if (!finalAnswer) {
-  //     alert("Оберіть або введіть відповідь!");
-  //     return;
-  //   }
-
-  //   // Facebook Pixel
-  //   ReactPixel.track("Lead", {
-  //     selectedOption: answer || null,
-  //     customInput: customAnswer || null,
-  //   });
-
-  //   setSubmitted(true);
-  //   setLoading(true);
-
-  //   fetch("http://localhost:5000/api/submit", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       selectedOption: answer || null,
-  //       customInput: customAnswer || null,
-  //     }),
-  //   }).catch(console.error);
-
-  //   // -----------------------------
-  //   // Відкладений перехід на рекламу (2.5 секунди)
-  //   // -----------------------------
-  //   setTimeout(() => {
-  //     window.open(
-  //       "https://closefracture.com/q07zxugb62?key=afb4a208db955766961b5bd389e88aa1",
-  //       "_blank",
-  //     );
-  //     setLoading(false); // можна вимкнути лоадер разом з відкриттям
-  //   }, 2000); // тут можна змінити час (мс)
-  // };
 
   return (
     <div className="quiz-bg">
