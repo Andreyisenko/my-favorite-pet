@@ -43,8 +43,7 @@ function MiniQuiz() {
     // }).catch(console.error);
 
     // Тепер встановлюємо URL у відкритій вкладці
-    pop.location.href =
-      "https://closefracture.com/q07zxugb62?key=afb4a208db955766961b5bd389e88aa1";
+    pop.location.href = "https://rzekl.com/g/1e8d1144947e34c89e7b16525dc3e8/";
 
     setLoading(false);
   };
