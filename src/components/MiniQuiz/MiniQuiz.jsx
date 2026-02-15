@@ -43,7 +43,7 @@ function MiniQuiz() {
     // }).catch(console.error);
 
     // Тепер встановлюємо URL у відкритій вкладці
-    pop.location.href = "https://rzekl.com/g/1e8d1144947e34c89e7b16525dc3e8/";
+    pop.location.href = "https://sgkaa.com/g/p00i8v2y657e34c89e7b49e53af9a7/";
 
     setLoading(false);
   };
